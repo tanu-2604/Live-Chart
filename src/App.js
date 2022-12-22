@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid, makeStyles, Paper } from "@material-ui/core";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+//import FusionChart from "./chart/fusion/FusionChart";
+import GoogleCharts from "./chart/google/GoogleCharts";
+import Charts from "./chart/reactChart/Charts";
+import Navbar from "./layout/Navbar";
+import OpenSidebar from "./layout/OpenSidebar";
+import SharedLayout from "./layout/SharedLAyout";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+}));
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Navbar />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<GoogleCharts />} />
+          <Route path='google' element={<GoogleCharts />} />
+          <Route path='React' element={<Charts />} />
+          {/* <Route path='*' element={<Error />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+      
+    </>
   );
 }
 
