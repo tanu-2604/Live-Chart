@@ -29,6 +29,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Charts() {
   const classes = useStyles();
+  console.log(barData)
+  const datas = Object.keys(barData)
+  const values = Object.values(barData)
+  const data={
+    "labels": datas.map((item)=> item),
+    "datasets": [
+        {
+            "label": "Dataset 1",
+            "data":values.map((item)=>item.Success),
+            "borderColor": "rgb(255, 99, 132)",
+            "backgroundColor": "rgba(237, 220, 51, 1)"
+        },
+        {
+            "label": "Dataset 2",
+            "data":values.map((item)=>item.Failure),
+            "borderColor": "rgb(53, 162, 235)",
+            "backgroundColor": "rgba(237, 220, 51, 1)"
+        },
+        {
+            "label": "Dataset 2",
+            "data":values.map((item)=>item.SuccessPercetage),
+            "borderColor": "rgb(53, 162, 235)",
+            "backgroundColor": "rgba(237, 220, 51, 1)"
+        }
+    ]
+}
+ 
+  console.log(data,values)
   return (
     <>
       <div className={classes.root}>
@@ -40,7 +68,7 @@ function Charts() {
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-             <CustomChart data={barData} options={barOptions} styleData={barStyle} chartType="Charts" />
+             <CustomChart data={data} options={barOptions} styleData={barStyle} chartType="Charts" />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
