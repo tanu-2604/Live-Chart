@@ -18,9 +18,6 @@ export const options = {
 export function BarChart() {
   return (
     <Chart
-      chartType="Bar"
-      width="95%"
-      height="400px"
       data={data}
       style={{fontWeight:500}}
       options={options}

@@ -5,6 +5,15 @@ import { BarChart } from "./BarChart";
 import { PieChart } from "./PieChart";
 import { MixedChart } from "./MixedChart";
 import { DonutChart } from "./DonutChart";
+import { CustomChart } from "../../components/CustomChart";
+import { data, options,styleData } from "../../data/groupBar";
+import { barOptions,barData ,barStyle} from "../../data/barData";
+import { mixedData, mixedOptions, mixedStyle } from "../../data/mixedData";
+import { pieData, pieOptions } from "../../data/pieData";
+import { stackedData, stackedOptions } from "../../data/stackedData";
+import { mixedStackedData, mixedStackedOptions, mixedStackedStyle } from "../../data/StackedLineData";
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,32 +35,32 @@ function Charts() {
         <Grid container>
           <Grid item xs={12} sm={6} md={6} lg={6} >
             <Paper className={classes.paper}>
-              <LineChart />
+           <CustomChart data={data} options={options} styleData={styleData} chartType="Charts"/>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-             <BarChart/>
+             <CustomChart data={barData} options={barOptions} styleData={barStyle} chartType="Charts" />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-              <StackedBarChart/>
+              <CustomChart data={stackedData} options={stackedOptions} styleData={barStyle} chartType="Stacked" />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-             <MixedChart/>
+             <CustomChart data={mixedData} options={mixedOptions} styleData={mixedStyle} chartType="Charts" />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-             <PieChart/>
+             <CustomChart data={pieData} options={pieOptions} chartType="PieChart" />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Paper className={classes.paper}>
-             <DonutChart/>
+              <CustomChart data={mixedStackedData} options={mixedStackedOptions} styleData={mixedStackedStyle} chartType="Stacked" />
             </Paper>
           </Grid>
         </Grid>

@@ -1,29 +1,25 @@
 import React from "react";
-import { Chart } from "react-google-charts";
+import { Bar, Chart, Doughnut, Pie } from "react-chartjs-2";
+//import { Chart } from "react-google-charts";
 
-export const data = [
-  ["Year", "Sales", "Expenses", "Profit"],
-  ["2014", 1000, 400, 200],
-  ["2015", 1170, 460, 250],
-  ["2016", 660, 1120, 300],
-  ["2017", 1030, 540, 350],
-];
-
-export const options = {
-  chart: {
-    title: "Bar Chart",
-  },
-};
-
-export function CustomChart() {
-  return (
-    <Chart
-      chartType="Bar"
-      width="95%"
-      height="400px"
-      data={data}
-      style={{fontWeight:500}}
-      options={options}
-    />
-  );
+export function CustomChart({ data, options, styleData, chartType }) {
+  switch (chartType) {
+    case "PieChart":
+      return <Pie data={data} options={options} />;
+    case "Doughnut":
+      return <Doughnut data={data} options={options} />;
+    case "Stacked":
+      return <Bar options={options} data={data} />;
+    case "Charts":
+      return (
+        <Chart
+          type={styleData.chartType}
+          data={data}
+          style={{ fontWeight: 500 }}
+          options={options}
+        />
+      )
+      default:
+        return;
+  }
 }

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //import FusionChart from "./chart/fusion/FusionChart";
 import GoogleCharts from "./chart/google/GoogleCharts";
 import Charts from "./chart/reactChart/Charts";
+import { CustomChart } from "./components/CustomChart";
 import Navbar from "./layout/Navbar";
 import OpenSidebar from "./layout/OpenSidebar";
 import SharedLayout from "./layout/SharedLAyout";
@@ -28,11 +29,15 @@ function App() {
           <Route index element={<GoogleCharts />} />
           <Route path='google' element={<GoogleCharts />} />
           <Route path='React' element={<Charts />} />
-          {/* <Route path='*' element={<Error />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
-      
+  {/* <Grid md={6}>
+    <Paper>
+        <CustomChart/>
+    </Paper>npm start
+  </Grid>
+       */}
     </>
   );
 }
